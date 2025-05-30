@@ -7,15 +7,36 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
+    @State private var showChat = false
+    @State private var isPrepared = false
+    @State private var currentViewController: UIViewController?
+
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            if isPrepared {
+                Button("Start Chat") {
+                    if let vc = currentViewController {
+                        ChatManager.shared.startChat(from: vc)
+                    } else {
+                        print("No current view controller to start chat from.")
+                    }
+                }
+            } else {
+                ProgressView("Preparing Chat...")
+            }
         }
-        .padding()
+        .background(
+            ViewControllerResolver { vc in
+                self.currentViewController = vc
+            }
+            .frame(width: 0, height: 0)
+        )
+        .task {
+            await ChatManager.shared.prepareIfNeeded()
+            isPrepared = true
+        }
     }
 }
 

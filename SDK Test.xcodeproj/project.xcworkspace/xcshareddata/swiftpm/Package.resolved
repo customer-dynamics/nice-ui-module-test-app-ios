@@ -1,0 +1,78 @@
+{
+  "originHash" : "b8d2f1b015a4446fe4d8351ac9dc60a6481988a0fab0df57dd1087d925b4fd0b",
+  "pins" : [
+    {
+      "identity" : "keychain-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/evgenyneu/keychain-swift",
+      "state" : {
+        "revision" : "d108a1fa6189e661f91560548ef48651ed8d93b9",
+        "version" : "20.0.0"
+      }
+    },
+    {
+      "identity" : "kingfisher",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/onevcat/Kingfisher.git",
+      "state" : {
+        "revision" : "7deda23bbdca612076c5c315003d8638a08ed0f1",
+        "version" : "8.3.2"
+      }
+    },
+    {
+      "identity" : "mockable",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Kolos65/Mockable",
+      "state" : {
+        "revision" : "118a0b8934e585b80952586db30bcb72aef45a74",
+        "version" : "0.3.2"
+      }
+    },
+    {
+      "identity" : "nice-cxone-mobile-guide-utility-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/nice-devone/nice-cxone-mobile-guide-utility-ios.git",
+      "state" : {
+        "revision" : "d3f7ba2ed2aecd84be1e7ca717f07d641ba25c88",
+        "version" : "3.0.0-rc"
+      }
+    },
+    {
+      "identity" : "nice-cxone-mobile-sdk-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/nice-devone/nice-cxone-mobile-sdk-ios",
+      "state" : {
+        "revision" : "52c4be423a2cd6d4f3e661f2c5ebbe6680af61b7",
+        "version" : "3.0.0-rc"
+      }
+    },
+    {
+      "identity" : "nice-cxone-mobile-ui-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/nice-devone/nice-cxone-mobile-ui-ios",
+      "state" : {
+        "revision" : "0103a553103adb6d2d0acc84c780663ad7033b7c",
+        "version" : "3.0.0-rc1"
+      }
+    },
+    {
+      "identity" : "swift-syntax",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-syntax.git",
+      "state" : {
+        "revision" : "0687f71944021d616d34d922343dcef086855920",
+        "version" : "600.0.1"
+      }
+    },
+    {
+      "identity" : "xctest-dynamic-overlay",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/xctest-dynamic-overlay",
+      "state" : {
+        "revision" : "39de59b2d47f7ef3ca88a039dff3084688fe27f4",
+        "version" : "1.5.2"
+      }
+    }
+  ],
+  "version" : 3
+}

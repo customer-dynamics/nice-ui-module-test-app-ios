@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		2701D03E2DEA368800DB8F45 /* CXoneChatSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 2701D03D2DEA368800DB8F45 /* CXoneChatSDK */; };
+		2701D0412DEA36A000DB8F45 /* CXoneChatUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2701D0402DEA36A000DB8F45 /* CXoneChatUI */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		2701D02E2DEA365B00DB8F45 /* SDK Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SDK Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +28,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2701D0412DEA36A000DB8F45 /* CXoneChatUI in Frameworks */,
+				2701D03E2DEA368800DB8F45 /* CXoneChatSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +72,8 @@
 			);
 			name = "SDK Test";
 			packageProductDependencies = (
+				2701D03D2DEA368800DB8F45 /* CXoneChatSDK */,
+				2701D0402DEA36A000DB8F45 /* CXoneChatUI */,
 			);
 			productName = "SDK Test";
 			productReference = 2701D02E2DEA365B00DB8F45 /* SDK Test.app */;
@@ -94,6 +103,10 @@
 			);
 			mainGroup = 2701D0252DEA365B00DB8F45;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				2701D03C2DEA368800DB8F45 /* XCRemoteSwiftPackageReference "nice-cxone-mobile-sdk-ios" */,
+				2701D03F2DEA36A000DB8F45 /* XCRemoteSwiftPackageReference "nice-cxone-mobile-ui-ios" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 2701D02F2DEA365B00DB8F45 /* Products */;
 			projectDirPath = "";
@@ -324,6 +337,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2701D03C2DEA368800DB8F45 /* XCRemoteSwiftPackageReference "nice-cxone-mobile-sdk-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nice-devone/nice-cxone-mobile-sdk-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = "3.0.0-rc";
+			};
+		};
+		2701D03F2DEA36A000DB8F45 /* XCRemoteSwiftPackageReference "nice-cxone-mobile-ui-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nice-devone/nice-cxone-mobile-ui-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = "3.0.0-rc1";
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2701D03D2DEA368800DB8F45 /* CXoneChatSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2701D03C2DEA368800DB8F45 /* XCRemoteSwiftPackageReference "nice-cxone-mobile-sdk-ios" */;
+			productName = CXoneChatSDK;
+		};
+		2701D0402DEA36A000DB8F45 /* CXoneChatUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2701D03F2DEA36A000DB8F45 /* XCRemoteSwiftPackageReference "nice-cxone-mobile-ui-ios" */;
+			productName = CXoneChatUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2701D0262DEA365B00DB8F45 /* Project object */;
 }
