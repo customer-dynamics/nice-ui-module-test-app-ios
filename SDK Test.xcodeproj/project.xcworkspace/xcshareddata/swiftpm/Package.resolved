@@ -33,8 +33,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/nice-devone/nice-cxone-mobile-guide-utility-ios.git",
       "state" : {
-        "revision" : "d3f7ba2ed2aecd84be1e7ca717f07d641ba25c88",
-        "version" : "3.0.0-rc"
+        "revision" : "9d0c74001c70aaec3cd33c6d64df1114cd6ef8ff",
+        "version" : "3.0.0"
       }
     },
     {
@@ -42,8 +42,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/nice-devone/nice-cxone-mobile-sdk-ios",
       "state" : {
-        "revision" : "52c4be423a2cd6d4f3e661f2c5ebbe6680af61b7",
-        "version" : "3.0.0-rc"
+        "revision" : "c810895dce397cc49186f89246dbd09b939499b4",
+        "version" : "3.0.0"
       }
     },
     {
@@ -51,8 +51,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/nice-devone/nice-cxone-mobile-ui-ios",
       "state" : {
-        "revision" : "0103a553103adb6d2d0acc84c780663ad7033b7c",
-        "version" : "3.0.0-rc1"
+        "revision" : "e36f502ee1d9caada5897b03fab60abc03ff4c00",
+        "version" : "3.0.0"
       }
     },
     {

@@ -344,7 +344,7 @@
 			repositoryURL = "https://github.com/nice-devone/nice-cxone-mobile-sdk-ios";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = "3.0.0-rc";
+				minimumVersion = 3.0.0;
 			};
 		};
 		2701D03F2DEA36A000DB8F45 /* XCRemoteSwiftPackageReference "nice-cxone-mobile-ui-ios" */ = {
@@ -352,7 +352,7 @@
 			repositoryURL = "https://github.com/nice-devone/nice-cxone-mobile-ui-ios";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = "3.0.0-rc1";
+				minimumVersion = 3.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
