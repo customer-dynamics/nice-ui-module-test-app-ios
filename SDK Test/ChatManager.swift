@@ -30,7 +30,11 @@ class ChatManager: ObservableObject {
     }
 
     func startChat(from presentingVC: UIViewController) {
-        let coordinator = ChatCoordinator()
+        let configuration = ChatConfiguration(
+            additionalCustomerCustomFields: ["p1": "something"],
+            additionalContactCustomFields: ["location": "San Francisco", "fname": "John"]
+        )
+        let coordinator = ChatCoordinator(chatConfiguration: configuration)
         coordinator.start(in: presentingVC, presentModally: true)
     }
 }
