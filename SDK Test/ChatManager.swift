@@ -34,7 +34,9 @@ class ChatManager: ObservableObject {
             additionalCustomerCustomFields: ["p1": "something"],
             additionalContactCustomFields: ["location": "San Francisco", "fname": "John"]
         )
-        let coordinator = ChatCoordinator(chatConfiguration: configuration)
+        let localization = ChatLocalization()
+        localization.commonUnassignedAgent = ""
+        let coordinator = ChatCoordinator(chatLocalization: localization, chatConfiguration: configuration)
         coordinator.start(in: presentingVC, presentModally: true)
     }
 }
