@@ -22,6 +22,7 @@ class ChatManager: ObservableObject {
                 brandId: 1390,
                 channelId: "chat_7e079ff5-6ffd-4001-8dd9-413cd041ce54"
             )
+            CXoneChat.shared.customer.setName(firstName: "SDK", lastName: "Tester")
             isReady = true
             print("Chat prepared")
         } catch {
