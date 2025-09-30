@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SafariServices
 
 
 struct ContentView: View {
@@ -21,6 +22,18 @@ struct ContentView: View {
                         ChatManager.shared.startChat(from: vc)
                     } else {
                         print("No current view controller to start chat from.")
+                    }
+                }
+                Button("Open Guide in Safari View Controller") {
+                    guard let url = URL(string: "https://nice-incontact-mobile-sdk.s3.us-west-2.amazonaws.com/index.html") else {
+                        print("Invalid guide URL.")
+                        return
+                    }
+                    if let vc = currentViewController {
+                        let safariVC = SFSafariViewController(url: url)
+                        vc.present(safariVC, animated: true)
+                    } else {
+                        print("No current view controller to present guide.")
                     }
                 }
             } else {
@@ -43,3 +56,4 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+
