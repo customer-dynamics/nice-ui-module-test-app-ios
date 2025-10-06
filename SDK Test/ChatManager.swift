@@ -20,7 +20,7 @@ class ChatManager: ObservableObject {
             try await CXoneChat.shared.connection.prepare(
                 environment: .NA1,
                 brandId: 1390,
-                channelId: "chat_7e079ff5-6ffd-4001-8dd9-413cd041ce54"
+                channelId: "chat_955c2f5e-5cc1-4131-92ed-6a6aa0878b00"
             )
             CXoneChat.shared.customer.setName(firstName: "SDK", lastName: "Tester")
             isReady = true
