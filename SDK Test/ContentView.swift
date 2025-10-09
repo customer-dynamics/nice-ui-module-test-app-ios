@@ -13,7 +13,11 @@ struct ContentView: View {
     @State private var showChat = false
     @State private var isPrepared = false
     @State private var currentViewController: UIViewController?
-
+    
+    init() {
+        RemoteNotificationsManager.shared.registerIfNeeded()
+    }
+    
     var body: some View {
         NavigationStack {
             VStack {

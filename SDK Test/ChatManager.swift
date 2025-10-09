@@ -23,6 +23,7 @@ class ChatManager: ObservableObject {
                 channelId: "chat_955c2f5e-5cc1-4131-92ed-6a6aa0878b00"
             )
             CXoneChat.shared.customer.setName(firstName: "SDK", lastName: "Tester")
+            CXoneChat.shared.add(delegate: self)
             isReady = true
             print("Chat prepared")
         } catch {
@@ -40,5 +41,13 @@ class ChatManager: ObservableObject {
         localization.prechatSurveySubtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
         let coordinator = ChatCoordinator(chatLocalization: localization, chatConfiguration: configuration)
         coordinator.start(in: presentingVC, presentModally: true)
+    }
+}
+
+extension ChatManager: CXoneChatDelegate {
+    func onThreadUpdated(_ chatThread: CXoneChatSDK.ChatThread) {
+        if chatThread.messages.last?.contentType == MessageContentType.unknown {
+            print("Received unknown message type")
+        }
     }
 }
