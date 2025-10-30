@@ -13,6 +13,7 @@ import SafariServices
 @MainActor
 class ChatManager: ObservableObject {
     static let shared = ChatManager()
+    public var visitorId: UUID?
     private(set) var isReady = false
     private var presentingVC: UIViewController?
     private var isDisplayingSurvey = false
@@ -45,6 +46,8 @@ class ChatManager: ObservableObject {
         localization.prechatSurveySubtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
         let coordinator = ChatCoordinator(chatLocalization: localization, chatConfiguration: configuration)
         coordinator.start(in: presentingVC, presentModally: true)
+        visitorId = CXoneChat.shared.analytics.visitorId;
+        print("The visitor ID is: \(String(describing: visitorId) ?? "nil")")
     }
 }
 
