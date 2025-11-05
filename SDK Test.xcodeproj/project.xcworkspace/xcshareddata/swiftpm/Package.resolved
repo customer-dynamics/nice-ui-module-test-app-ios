@@ -51,8 +51,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/nice-devone/nice-cxone-mobile-ui-ios",
       "state" : {
-        "revision" : "2138202249f4dbc4b63a66e980b3f6a14ade4157",
-        "version" : "3.0.2"
+        "revision" : "744f3196003853140e37b8afcd540c26ca3fe2cb",
+        "version" : "3.0.3"
       }
     },
     {
