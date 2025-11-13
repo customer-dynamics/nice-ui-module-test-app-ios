@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a testbed project for demoing and testing various features of the NICE CXone Chat UI Module, a drop-in chat interface for iOS applications. The project is currently configured for a live chat chat channel, but the implementation is nearly the same for asynchronous messaging channels.
+This is a testbed project for demoing and testing various features of the [NICE CXone Chat UI Module](https://github.com/nice-devone/nice-cxone-mobile-ui-ios), a drop-in chat interface for iOS applications. The project is currently configured for a live chat chat channel, but the implementation is nearly the same for asynchronous messaging channels.
 
 ## Items of Interest
 
