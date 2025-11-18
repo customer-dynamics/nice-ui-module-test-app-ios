@@ -46,8 +46,13 @@ class ChatManager: ObservableObject {
 
 extension ChatManager: CXoneChatDelegate {
     func onThreadUpdated(_ chatThread: CXoneChatSDK.ChatThread) {
-        if chatThread.messages.last?.contentType == MessageContentType.unknown {
-            print("Received unknown message type")
+        if let contentType = chatThread.messages.last?.contentType {
+            switch contentType {
+            case .unknown:
+                print("Received unknown message type")
+            default:
+                break
+            }
         }
     }
 }
