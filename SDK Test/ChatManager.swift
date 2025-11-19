@@ -60,13 +60,13 @@ class ChatManager: ObservableObject {
 //                brand: BrandStyleColorsImpl.defaultLight,
                 brand: BrandStyleColorsImpl(
                     primary: primaryColor,
-                    onPrimary: black,
+                    onPrimary: white,
                     primaryContainer: black,
-                    onPrimaryContainer: black,
+                    onPrimaryContainer: white,
                     secondary: black,
-                    onSecondary: black,
+                    onSecondary: white,
                     secondaryContainer: black,
-                    onSecondaryContainer: black
+                    onSecondaryContainer: white
                 ),
 //                border: BorderStyleColorsImpl.defaultLight, // Not accessible
                 border: BorderStyleColorsImpl(
