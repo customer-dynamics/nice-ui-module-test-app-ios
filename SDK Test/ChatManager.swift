@@ -90,7 +90,7 @@ class ChatManager: ObservableObject {
 //        let chatStyle = ChatStyle(colorsManager: customColors)
         
         let coordinator = ChatCoordinator(chatLocalization: localization, chatConfiguration: configuration)
-        coordinator.start(in: presentingVC, presentModally: true)
+        coordinator.start(threadId: (nil as String?), in: presentingVC, presentModally: true, onFinish: nil)
     }
 }
 
