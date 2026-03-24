@@ -22,10 +22,58 @@ class ChatManager: ObservableObject {
                 brandId: 1390,
                 channelId: "chat_955c2f5e-5cc1-4131-92ed-6a6aa0878b00"
             )
-            CXoneChat.shared.customer.setName(firstName: "SDK", lastName: "Tester")
+            CXoneChat.shared.customer.setName(firstName: "Guest", lastName: "User")
             CXoneChat.shared.add(delegate: self)
             isReady = true
             print("Chat prepared")
+        } catch {
+            print("❌ Chat prepare failed: \(error)")
+        }
+    }
+    
+    func signIn() async {
+        // Do your login here and get the account data.
+        
+        // Remove the existing customer identity and custom fields
+        CXoneChat.signOut()
+        
+        // Set the customer identity from the account data.
+        do {
+            try CXoneChat.shared.customer.set(customer: CustomerIdentity(
+                id: "some-unique-identifier-for-the-account",
+                firstName: "SDK",
+                lastName: "Tester"
+            ))
+        } catch {
+            print("❌ Sign in failed: \(error)")
+        }
+        
+        // Re-prepare the SDK.
+        do {
+            try await CXoneChat.shared.connection.prepare(
+                environment: .NA1,
+                brandId: 1390,
+                channelId: "chat_955c2f5e-5cc1-4131-92ed-6a6aa0878b00"
+            )
+            print("Chat prepared")
+        } catch {
+            print("❌ Chat prepare failed: \(error)")
+        }
+    }
+    
+    func signOut() async {
+        // Remove the existing customer identity and custom fields.
+        CXoneChat.signOut()
+        
+        // Re-prepare with new identity (guest).
+        do {
+            try await CXoneChat.shared.connection.prepare(
+                environment: .NA1,
+                brandId: 1390,
+                channelId: "chat_955c2f5e-5cc1-4131-92ed-6a6aa0878b00"
+            )
+            CXoneChat.shared.customer.setName(firstName: "Guest", lastName: "User")
+            print("Chat re-prepared")
         } catch {
             print("❌ Chat prepare failed: \(error)")
         }
