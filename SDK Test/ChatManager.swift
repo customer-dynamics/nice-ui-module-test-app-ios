@@ -17,6 +17,7 @@ class ChatManager: ObservableObject {
     private(set) var isReady = false
     private var presentingVC: UIViewController?
     private var isDisplayingSurvey = false
+    private var lastThreadId: String?
 
     func prepareIfNeeded() async {
         guard !isReady else { return }
@@ -150,10 +151,15 @@ class ChatManager: ObservableObject {
 
 extension ChatManager: CXoneChatDelegate {
     func onThreadUpdated(_ chatThread: CXoneChatSDK.ChatThread) {
-        guard let lastMessage = chatThread.messages.last else { return }
-        guard let user = lastMessage.authorUser else { return }
+        // Reset isDisplayingSurvey flag, if the thread has changed.
+        if (chatThread.idString != lastThreadId) {
+            isDisplayingSurvey = false
+        }
+        self.lastThreadId = chatThread.idString
         
         // Automatically present the satisfaction survey.
+        guard let lastMessage = chatThread.messages.last else { return }
+        guard let user = lastMessage.authorUser else { return }
         if (user.isSurveyUser && !isDisplayingSurvey) {
             isDisplayingSurvey = true
                     
