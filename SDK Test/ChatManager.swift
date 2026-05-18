@@ -84,6 +84,8 @@ class ChatManager: ObservableObject {
     }
 
     func startChat(from presentingVC: UIViewController) {
+        self.presentingVC = presentingVC
+
         // Add your custom fields.
         let configuration = ChatConfiguration(
             additionalCustomerCustomFields: ["p1": "something"],
@@ -151,12 +153,34 @@ extension ChatManager: CXoneChatDelegate {
         guard let lastMessage = chatThread.messages.last else { return }
         guard let user = lastMessage.authorUser else { return }
         
+        // Automatically present the satisfaction survey.
         if (user.isSurveyUser && !isDisplayingSurvey) {
             isDisplayingSurvey = true
+                    
+            // Extract the raw text from the last message
+            let messageText: String
+            switch lastMessage.contentType {
+            case .text(let entity):
+                messageText = entity.text
+            default:
+                print("Unable to handle a survey with a content type other than text.")
+                return
+            }
 
-            // Parse this from the message instead of relying on a hard-coded URL.
-            guard let url = URL(string: "https://ahoylink.com/sPjFhwAlGg") else {
-                print("Invalid survey URL.")
+            // Find the first URL inside the message text, e.g.
+            // "This is a feedback management survey https://ahoylink.com/5GVR67r5Zt"
+            let urlText: String? = {
+                let detector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+                let range = NSRange(location: 0, length: (messageText as NSString).length)
+                let match = detector?.firstMatch(in: messageText, options: [], range: range)
+                if let match = match, match.resultType == .link, let r = Range(match.range, in: messageText) {
+                    return String(messageText[r])
+                }
+                return nil
+            }()
+
+            guard let urlText, let url = URL(string: urlText) else {
+                print("Invalid or missing survey URL in message: \(messageText)")
                 return
             }
             
@@ -178,6 +202,7 @@ extension ChatManager: CXoneChatDelegate {
             }
         }
 
+        // Print a log if we receive an unknown message type.
         if let contentType = chatThread.messages.last?.contentType {
             switch contentType {
             case .unknown:
