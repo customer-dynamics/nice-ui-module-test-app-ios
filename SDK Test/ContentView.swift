@@ -12,6 +12,7 @@ import SafariServices
 struct ContentView: View {
     @State private var showChat = false
     @State private var isPrepared = false
+    @State private var isSignedIn = false
     @State private var currentViewController: UIViewController?
     
     init() {
@@ -44,6 +45,22 @@ struct ContentView: View {
                     NavigationLink("Open Guide in Web View") {
                         GuideView()
                     }
+                    
+                    Button("Sign In") {
+                        Task {
+                            await ChatManager.shared.signIn()
+                            isSignedIn = true
+                        }
+                    }
+                    .padding(.top)
+                    .disabled(isSignedIn)
+                    Button("Sign Out") {
+                        Task {
+                            await ChatManager.shared.signOut()
+                            isSignedIn = false
+                        }
+                    }
+                    .disabled(!isSignedIn)
                 } else {
                     ProgressView("Preparing Chat...")
                 }
