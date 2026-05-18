@@ -8,11 +8,15 @@
 import CXoneChatSDK
 import CXoneChatUI
 import SwiftUI
+import SafariServices
 
 @MainActor
 class ChatManager: ObservableObject {
     static let shared = ChatManager()
+    public var visitorId: UUID?
     private(set) var isReady = false
+    private var presentingVC: UIViewController?
+    private var isDisplayingSurvey = false
 
     func prepareIfNeeded() async {
         guard !isReady else { return }
@@ -144,6 +148,36 @@ class ChatManager: ObservableObject {
 
 extension ChatManager: CXoneChatDelegate {
     func onThreadUpdated(_ chatThread: CXoneChatSDK.ChatThread) {
+        guard let lastMessage = chatThread.messages.last else { return }
+        guard let user = lastMessage.authorUser else { return }
+        
+        if (user.isSurveyUser && !isDisplayingSurvey) {
+            isDisplayingSurvey = true
+
+            // Parse this from the message instead of relying on a hard-coded URL.
+            guard let url = URL(string: "https://ahoylink.com/sPjFhwAlGg") else {
+                print("Invalid survey URL.")
+                return
+            }
+            
+            // Automatically display the web page for the survey.
+            Task { @MainActor in
+                guard let base = presentingVC else {
+                    print("No current view controller to present guide.")
+                    return
+                }
+
+                var topMost: UIViewController = base
+                while let presented = topMost.presentedViewController {
+                    topMost = presented
+                }
+
+                let safariVC = SFSafariViewController(url: url)
+                safariVC.modalPresentationStyle = .pageSheet
+                topMost.present(safariVC, animated: true)
+            }
+        }
+
         if let contentType = chatThread.messages.last?.contentType {
             switch contentType {
             case .unknown:
@@ -154,3 +188,4 @@ extension ChatManager: CXoneChatDelegate {
         }
     }
 }
+

@@ -32,11 +32,6 @@
 			path = "SDK Test";
 			sourceTree = "<group>";
 		};
-		270C79392E7C93DF000E540D /* Tests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Tests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +58,6 @@
 			isa = PBXGroup;
 			children = (
 				2701D0302DEA365B00DB8F45 /* SDK Test */,
-				270C79392E7C93DF000E540D /* Tests */,
 				2701D02F2DEA365B00DB8F45 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -116,9 +110,6 @@
 			);
 			dependencies = (
 				270C793D2E7C93DF000E540D /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				270C79392E7C93DF000E540D /* Tests */,
 			);
 			name = Tests;
 			packageProductDependencies = (
