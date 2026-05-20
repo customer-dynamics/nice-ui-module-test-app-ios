@@ -18,7 +18,7 @@ class ChatManager: ObservableObject {
     private var presentingVC: UIViewController?
     private var isDisplayingSurvey = false
     private var lastThreadId: String?
-
+    
     func prepareIfNeeded() async {
         guard !isReady else { return }
         do {
@@ -168,6 +168,8 @@ extension ChatManager: CXoneChatDelegate {
             switch lastMessage.contentType {
             case .text(let entity):
                 messageText = entity.text
+            case .unknown(let fallbackText):
+                messageText = fallbackText ?? "Unknown"
             default:
                 print("Unable to handle a survey with a content type other than text.")
                 return
@@ -189,14 +191,21 @@ extension ChatManager: CXoneChatDelegate {
                 print("Invalid or missing survey URL in message: \(messageText)")
                 return
             }
-            
-            // Automatically display the web page for the survey.
+                        
             Task { @MainActor in
+                // Hide EndConversationView, otherwise it will be overlaid on top of the survey.
+                let windowScenes = UIApplication.shared.connectedScenes
+                    .compactMap { $0 as? UIWindowScene }
+                guard let windowScene = windowScenes.first(where: { $0.activationState == .foregroundActive }) else { return }
+                let windowToHide = windowScene.windows.last // Assumption; unsure if EndConversationView will always be last
+                windowToHide?.isHidden = true
+                windowToHide?.rootViewController = nil
+
+                // Automatically display the web page for the survey.
                 guard let base = presentingVC else {
-                    print("No current view controller to present guide.")
+                    print("No current view controller to present survey.")
                     return
                 }
-
                 var topMost: UIViewController = base
                 while let presented = topMost.presentedViewController {
                     topMost = presented
