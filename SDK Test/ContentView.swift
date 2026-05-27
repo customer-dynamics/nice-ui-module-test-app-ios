@@ -30,22 +30,21 @@ struct ContentView: View {
                             print("No current view controller to start chat from.")
                         }
                     }
-                    Button("Open Guide in Safari View Controller") {
-                        guard let url = URL(string: "https://nice-incontact-mobile-sdk.s3.us-west-2.amazonaws.com/index.html") else {
-                            print("Invalid guide URL.")
-                            return
-                        }
-                        if let vc = currentViewController {
-                            let safariVC = SFSafariViewController(url: url)
-                            vc.present(safariVC, animated: true)
-                        } else {
-                            print("No current view controller to present guide.")
-                        }
-                    }
-                    NavigationLink("Open Guide in Web View") {
-                        GuideView()
-                    }
-                    
+//                    Button("Open Guide in Safari View Controller") {
+//                        guard let url = URL(string: "https://nice-incontact-mobile-sdk.s3.us-west-2.amazonaws.com/index.html") else {
+//                            print("Invalid guide URL.")
+//                            return
+//                        }
+//                        if let vc = currentViewController {
+//                            let safariVC = SFSafariViewController(url: url)
+//                            vc.present(safariVC, animated: true)
+//                        } else {
+//                            print("No current view controller to present guide.")
+//                        }
+//                    }
+//                    NavigationLink("Open Guide in Web View") {
+//                        GuideView()
+//                    }
                     Button("Sign In") {
                         Task {
                             await ChatManager.shared.signIn()
